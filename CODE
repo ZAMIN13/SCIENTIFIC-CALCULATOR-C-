@@ -1,0 +1,428 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+// Function prototypes
+void add(double, double, int&, int&);
+void subtract(double, double, int&, int&);
+void multiply(double, double, int&, int&);
+void division(double, double, int&, int&);
+void mod(double, double, int&, int&);
+void power(double, double, int&, int&);
+void square(double, int&, int&);
+void cube(double, int&, int&);
+void Sin(double, int&, int&);
+void cosine(double, int&, int&);
+void tangent(double, int&, int&);
+void square_root(double, int&, int&);
+void Log(double, int&, int&);
+void factorial(int, int&, int&);
+void output(double);
+void perform_operations(int limit);
+
+// Function to print the result
+void output(double answer) 
+{
+    cout << " Ans = " << answer << endl;
+}
+
+// Main function to perform operations within the given limit
+void perform_operations(int limit) 
+{
+    char inp;                // Variable to store operator input
+    double num1 = 0, num2 = 0; // Variables to store numbers
+    int operation_count = 0; // Counter for the number of operations performed
+
+    cout << endl;
+
+    // Loop until the operation count reaches the limit
+    while (operation_count < limit)
+	
+   {
+	
+        cout << "ENTER OPERATOR (or 'AC' to quit): ";
+        cin >> inp; // Read operator input
+        cout << endl;
+
+        if (inp == 'AC')
+        { // Exit if 'AC' is entered
+            break;
+        } 
+        else if (inp == '+') 
+        { // Addition
+            add(num1, num2, limit, operation_count);
+        } 
+        else if (inp == '-') 
+        { // Subtraction
+            subtract(num1, num2, limit, operation_count);
+        } 
+        else if (inp == '*') 
+        { // Multiplication
+            multiply(num1, num2, limit, operation_count);
+        } 
+        else if (inp == '/') 
+        { // Division
+            division(num1, num2, limit, operation_count);
+        } 
+        else if (inp == 'm') 
+        { // Modulus
+            mod(num1, num2, limit, operation_count);
+        } 
+        else if (inp == '^') 
+        { // Power
+            power(num1, num2, limit, operation_count);
+        } 
+        else if (inp == '3') 
+        { // Cube
+            cube(num1, limit, operation_count);
+        } 
+        else if (inp == '2') 
+        { // Square
+            square(num1, limit, operation_count);
+        } 
+        else if (inp == 'S') 
+        { // Sine
+            Sin(num1, limit, operation_count);
+        } 
+        else if (inp == 'C') 
+        { // Cosine
+            cosine(num1, limit, operation_count);
+        } 
+        else if (inp == 'T') 
+        { // Tangent
+            tangent(num1, limit, operation_count);
+        } 
+        else if (inp == 'R') 
+        { // Square root
+            square_root(num1, limit, operation_count);
+        } 
+        else if (inp == 'L') 
+        { // Logarithm
+            Log(num1, limit, operation_count);
+        } 
+        else if (inp == '!') 
+        { // Factorial
+            factorial(static_cast<int>(num1), limit, operation_count);
+        } 
+        else 
+        { // Invalid input
+            cout << "You Entered Invalid Value!!" << endl;
+        }
+    }
+
+    if (operation_count >= limit) 
+    { // Notify if operation limit is exceeded
+        cout << "Operation limit reached..." << endl;
+    }
+}
+
+// Function definitions for various operations
+// Addition
+void add(double a, double b, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER FIRST NUMBER: ";
+    cin >> a;
+    cout << "ENTER SECOND NUMBER: ";
+    cin >> b;
+    double answer = a + b; // Perform addition
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Subtraction
+void subtract(double a, double b, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER FIRST NUMBER: ";
+    cin >> a;
+    cout << "ENTER SECOND NUMBER: ";
+    cin >> b;
+    double answer = a - b; // Perform subtraction
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Multiplication
+void multiply(double a, double b, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER FIRST NUMBER: ";
+    cin >> a;
+    cout << "ENTER SECOND NUMBER: ";
+    cin >> b;
+    double answer = a * b; // Perform multiplication
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Division
+void division(double a, double b, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER FIRST NUMBER: ";
+    cin >> a;
+    cout << "ENTER SECOND NUMBER: ";
+    cin >> b;
+    if (b != 0) 
+    {
+        double answer = a / b; // Perform division if denominator is not zero
+        output(answer); // Print result
+    } 
+    else 
+    {
+        cout << "Division by zero is not allowed." << endl; // Handle division by zero
+    }
+    count++; // Increment operation count
+}
+
+// Modulus
+void mod(double a, double b, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER FIRST NUMBER: ";
+    cin >> a;
+    cout << "ENTER SECOND NUMBER: ";
+    cin >> b;
+    if (int(b) != 0) 
+    {
+        double answer = int(a) % int(b); // Perform modulus if denominator is not zero
+        output(answer); // Print result
+    } 
+    else 
+    {
+        cout << "Modulus by zero is not allowed." << endl; // Handle modulus by zero
+    }
+    count++; // Increment operation count
+}
+
+// Power
+void power(double a, double b, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER BASE: ";
+    cin >> a;
+    cout << "ENTER EXPONENT: ";
+    cin >> b;
+    double answer = pow(a, b); // Perform power operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Square
+void square(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER: ";
+    cin >> a;
+    double answer = a * a; // Perform square operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Cube
+void cube(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER: ";
+    cin >> a;
+    double answer = a * a * a; // Perform cube operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Sine
+void Sin(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER (in degrees): ";
+    cin >> a;
+    double radians = a * (M_PI / 180); // Convert degrees to radians
+    double answer = sin(radians); // Perform sine operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Cosine
+void cosine(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER (in degrees): ";
+    cin >> a;
+    double radians = a * (M_PI / 180); // Convert degrees to radians
+    double answer = cos(radians); // Perform cosine operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Tangent
+void tangent(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER (in degrees): ";
+    cin >> a;
+    double radians = a * (M_PI / 180); // Convert degrees to radians
+    double answer = tan(radians); // Perform tangent operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Square root
+void square_root(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER: ";
+    cin >> a;
+    double answer = sqrt(a); // Perform square root operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Logarithm
+void Log(double a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER: ";
+    cin >> a;
+    double answer = log(a); // Perform logarithm operation
+    output(answer); // Print result
+    count++; // Increment operation count
+}
+
+// Factorial
+void factorial(int a, int &limit, int &count) 
+{
+    if (count >= limit) 
+    { // Check if the operation limit is exceeded
+        cout << "Operation limit exceeded." << endl;
+        return;
+    }
+    cout << "ENTER NUMBER: ";
+    cin >> a;
+    if (a < 0) 
+    {
+        cout << "Factorial of a negative number is not defined." << endl;
+    } 
+    else 
+    {
+        double answer = 1;
+        for (int i = 1; i <= a; ++i) 
+        {
+            answer *= i; // Calculate factorial
+        }
+        output(answer); // Print result
+    }
+    count++; // Increment operation count
+}
+
+// Main function 
+int main() 
+{
+          
+    // Display calculator interface
+    cout << setw(123) << " " << endl; 
+    cout << setw(108) << " " << endl;
+    cout << setw(123) << "_______________________________________________________" << endl;
+    cout << setw(123) << "|                                                     |" << endl;
+    cout << setw(123) << "|                                                     |" << endl;
+    cout << setw(123) << "|         SCIENTIFIC CALCULATOR BY ALI BROTHERS       |" << endl;
+    cout << setw(123) << "|                      FH-51214                       |" << endl;
+    cout << setw(123) << "|                                                     |" << endl;
+    cout << setw(123) << "|_____________________________________________________|" << endl;                                          
+    cout << setw(123) << "|               |                   |                 |" << endl;
+    cout << setw(123) << "|       +       |         -         |        *        |" << endl;
+    cout << setw(123) << "|    ADDITION   |      SUBTRACT           MULTIPLY    |" << endl;
+    cout << setw(123) << "|_____________________________________________________|" << endl;
+    cout << setw(123) << "|               |                   |                 |" << endl;
+    cout << setw(123) << "|       /       |        ^          |       2         |" << endl;
+    cout << setw(123) << "|    DIVISION   |      POWER        |     SQUARE      |" << endl;
+    cout << setw(123) << "|_____________________________________________________|" << endl;
+    cout << setw(123) << "|               |                   |                 |" << endl;
+    cout << setw(123) << "|     3         |         !         |      R          |" << endl;
+    cout << setw(123) << "|    CUBE       |      FACTORIAL    |    SQ.ROOT      |" << endl;
+    cout << setw(123) << "|_____________________________________________________|" << endl;
+    cout << setw(123) << "|               |                   |                 |" << endl;
+    cout << setw(123) << "|      S        |         C         |      T          |" << endl;
+    cout << setw(123) << "|    SINE       |      COSINE       |    TANGENT      |" << endl;
+    cout << setw(123) << "|_____________________________________________________|" << endl;
+    cout << setw(123) << "|                         |                           |" << endl;
+    cout << setw(123) << "|               m         |              L            |" << endl;
+    cout << setw(123) << "|              MOD        |          Logarithm        |" << endl;
+    cout << setw(123) << "|_________________________|___________________________|" << endl;
+    cout << endl;
+    
+    char username='Z';         // Variable to store username
+	int password;
+    int operation_limit; // Variable to store the limit of operations
+
+    // User Authentication
+    cout<<setw(100) << "USERNAME: "<< username <<endl;
+    cout<<setw(100) << "PASSWORD: ";
+    cin >> password;
+
+    cout << "Enter the limit for the number of operations: ";
+    
+    cin >> operation_limit; // Read the limit of operations from the user
+
+    perform_operations(operation_limit); // function call 
+
+
+    	
+	
+	return 0;
+}
+
+
